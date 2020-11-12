@@ -1,0 +1,90 @@
+#创建命名空间
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: irobotbox-dataanalysis-staging
+#创建登录Harbor的密钥
+---
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJoYXJib3IuaXJvYm90Ym94LmNvbSI6eyJwYXNzd29yZCI6InNoQDIwMTkjUFgiLCJ1c2VybmFtZSI6ImFkbWluIn19fQ==
+kind: Secret
+metadata:
+  name: register-secert
+  namespace: irobotbox-dataanalysis-staging
+type: kubernetes.io/dockerconfigjson
+#配置部署
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whalesystem-webui
+  namespace: irobotbox-dataanalysis-staging
+  labels:
+    app: whalesystem-webui
+spec:
+  selector:
+    matchLabels:
+      app: whalesystem-webui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: whalesystem-webui
+    spec:
+      imagePullSecrets:
+      - name: register-secert
+      containers:
+      - image: harbor.irobotbox.com/irobotbox/whalesystem-webui:latest
+        name: whalesystem-webui
+        imagePullPolicy: Always
+        env:
+        - name: TZ
+          value: Asia/Shanghai
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "384Mi"
+            cpu: "300m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    traefik.backend.circuitbreaker: NetworkErrorRatio() > 0.5
+    traefik.backend.loadbalancer.method: drr
+  name: svc-whalesystem-webui
+  namespace: irobotbox-dataanalysis-staging
+spec:
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: whalesystem-webui-port
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: whalesystem-webui
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-whalesystem-webui
+  namespace: irobotbox-dataanalysis-staging
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: bi.staging.internal.irobotbox.com
+    http:
+      paths:
+        - backend:
+            serviceName: svc-whalesystem-webui
+            servicePort: 80
+          path: /
