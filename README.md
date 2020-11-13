@@ -14,7 +14,7 @@ Start the dev server,
 $ yarn start
 ```
 
-![image](https://images.cnblogs.com/cnblogs_com/Can-daydayup/1881374/o_201113111859demo.gif)
+![img](https://images.cnblogs.com/cnblogs_com/Can-daydayup/1881374/o_201113111859demo.gif)
 
 ## 用法
 
