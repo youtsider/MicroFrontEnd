@@ -14,6 +14,8 @@ Start the dev server,
 $ yarn start
 ```
 
+![img]https://github.com/youtsider/MicroFrontEnd/blob/master/demo1.gif
+
 ## 用法
 
 1.在根目录的routes.ts文件下配置菜单栏，每一个菜单对应不同的子系统。
