@@ -5,14 +5,11 @@ const dictUrl = {
 };
 
 export interface SettingModelState {
-	layout: string
 	theme: string
 	tabs: any
-	auth: any
 	collapse: boolean
 	tabsSelected: string
 	txtColor: string
-	logo: number
 }
 
 export interface SettingModelType {
@@ -29,21 +26,14 @@ const SettingModel: SettingModelType = {
   namespace: 'setting',
 
   state: {
-		layout: 'topmenu',
 		theme: 'dark',
 		tabs: [{
-			key: '/warehouseBoard',
-			title: '仓储综合看板'
+			key: '/baidu',
+			title: 'baidu'
 		}],
-		tabsSelected: '/warehouseBoard',
+		tabsSelected: '/baidu',
 		txtColor: '#fff',
-		auth: {
-			// adminId: 2,
-			// customerId: 1
-			// signature: 'irobotbox'
-		},
 		collapse: false,
-		logo: 1
   },
 
   effects: {

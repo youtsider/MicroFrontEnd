@@ -6,13 +6,18 @@
 	.menu-collapse-icon {
 		margin-right: 0 !important;
 	}
-
-	.icon {
-		color: var(--themeColor);
-	}
 }
 
 :global {
+	.ant-menu {
+		font-size: 12px;
+		background: var(--themeBgColor);
+		color: var(--themeColor);
+
+		.icon {
+			color: var(--themeColor);
+		}
+	}
 	.ant-menu-vertical.ant-menu-sub {
     color: rgba(0, 0, 0, 0.8);
 		height: 100%;
@@ -21,17 +26,6 @@
 	.ant-menu-submenu-popup {
 		top: 68px !important;
 		background-color: #fff !important;
-	}
-	.ant-menu-vertical > .ant-menu-item {
-		display: flex;
-		align-items: center;
-	}
-	.ant-menu-horizontal {
-		border-bottom: none;
-	}
-	.ant-menu-vertical .ant-menu-item:not(:last-child), .ant-menu-vertical-left .ant-menu-item:not(:last-child), .ant-menu-vertical-right .ant-menu-item:not(:last-child), .ant-menu-inline .ant-menu-item:not(:last-child), .ant-menu-vertical.ant-menu-sub .ant-menu-item {
-		display: flex;
-		align-items: center;
 	}
 	.ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
 		border-right: none;

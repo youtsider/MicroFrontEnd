@@ -16,9 +16,10 @@ const HeaderComponent: React.FC<HeaderProps> = (props: HeaderProps) => {
           <img
             src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
             alt="logo"
-            width={334}
+            width={36}
             height={36}
           />
+					<span className={styles['header-txt']}>微前端方案</span>
         </div>
       </div>
     </Header>

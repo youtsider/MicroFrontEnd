@@ -4,7 +4,7 @@ import { connect, SettingModelState } from 'umi';
 import classNames from 'classnames';
 
 import * as Icon from '@/common/icon.js';
-import { layoutMenu, configs } from '@/common/configs';
+import { configs } from '@/common/configs';
 import { getNavTemplate, getContentTemplate, handleBindClick, handleDrag } from '@/utils/comhelper'
 
 import { MenuComponentsProps } from './index.d';
@@ -87,7 +87,7 @@ const MenuComponents: React.FC<MenuComponentsProps> = (
   return (
     <Menu
       onClick={handleClick}
-      mode={layoutMenu[props.setting.layout]}
+      mode='vertical'
       triggerSubMenuAction="hover"
       className={classNames(styles['sider-menu'], {
         [styles['sider-menu-collapsed']]: props.setting.collapse,

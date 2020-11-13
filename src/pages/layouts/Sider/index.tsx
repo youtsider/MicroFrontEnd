@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
-import { connect, SettingModelState, Loading } from 'umi';
+import { connect, SettingModelState } from 'umi';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 
 import MenuComponents from '@/pages/layouts/MenuComponent';
-import logo4 from '@/assets/logo4.png';
-import logo5 from '@/assets/logo5.png';
 import { SiderProps } from './index.d';
 import styles from './index.less';
 
@@ -22,11 +20,11 @@ const SiderComponent: React.FC<SiderProps> = (props: SiderProps) => {
     });
     let headerNode: any = document.getElementsByClassName(
       'ant-layout-header',
-		)[0];
+    )[0];
     if (!props.setting.collapse) {
-			headerNode.style.display = 'none';
+      headerNode.style.display = 'none';
     } else {
-			headerNode.style.display = 'block';
+      headerNode.style.display = 'block';
     }
   };
 
@@ -40,7 +38,12 @@ const SiderComponent: React.FC<SiderProps> = (props: SiderProps) => {
     >
       {props.setting.collapse && (
         <div style={{ textAlign: 'center', padding: 10 }}>
-          <img src={props.setting.logo === 1 ? logo4 : logo5} />
+          <img
+            src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+            alt="logo"
+            width={36}
+            height={36}
+          />
         </div>
       )}
       <MenuComponents />

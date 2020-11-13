@@ -1,7 +1,7 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-	title: '鲸鱼系统-赛盒ERP',
+	title: '微前端系统',
 	dva: {
     immer: true,
     hmr: false,
@@ -9,5 +9,4 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  // routes: routes
 });
