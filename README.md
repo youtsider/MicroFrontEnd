@@ -14,7 +14,7 @@ Start the dev server,
 $ yarn start
 ```
 
-![img](https://github.com/youtsider/MicroFrontEnd/blob/master/demo.gif)
+![img](https://img2020.cnblogs.com/blog/1336199/202009/1336199-20200909010339493-1716062953.gif)
 
 ## 用法
 
